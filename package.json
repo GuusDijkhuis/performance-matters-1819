@@ -5,12 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run build:css & npm run build:js",
+    "build": "run-s build:*",
     "build:css": "cleancss -o public/css/main.min.css assets/css/main.css",
-    "build:js": "cleancss -o public/css/main.min.css assets/css/main.css",
-    "minify-js": "uglifyjs assets/js/* -h",
-    "prestart": "npm run-s build",
-    "start": "nodemon index.js"
+    "prestart": "npm run build",
+    "start": "node index.js",
+    "dev": "npm run-s prestart && nodemon index.js"
   },
   "keywords": [],
   "author": "",
@@ -21,7 +20,7 @@
     "express-handlebars": "^3.0.2",
     "node-fetch": "^2.3.0",
     "nodemon": "^1.18.10",
-    "uglify-js": "^3.4.10"
+    "npm-run-all": "^4.1.5"
   },
   "dependencies": {}
 }

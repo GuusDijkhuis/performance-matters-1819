@@ -3,7 +3,7 @@ const path = require('path')
 const express = require('express');
 const hbs = require('express-handlebars')
 
-const routes = require('./assets/js/routes/routeHandler.js')
+const routes = require('./assets/js/routeHandler.js')
 
 const app = express()
 const port = 8080

@@ -3,8 +3,12 @@ const path = require('path');
 const fs = require('fs');
 const fetch = require('node-fetch');
 
+const baseUrl = 'https://api.themoviedb.org/3';
+const endpoint = 'discover/movie?primary_release_year=2019';
+const key = '4fa4dea399a0fe1c63ee186e5b84c2a1'
+
 exports.allInfo = () => {
-  return parseToJson(`https://api.themoviedb.org/3/discover/movie?primary_release_year=2019&api_key=4fa4dea399a0fe1c63ee186e5b84c2a1`)
+  return parseToJson(`${baseUrl}/${endpoint}&api_key=${key}`)
   .then(res => {
     return res.results;
   })

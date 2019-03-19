@@ -1,5 +1,5 @@
 let express = require('express')
-let getData = require('../getData.js')
+let getData = require('./getData.js')
 
 exports.homepage = async (req, res, next) => {
   let data = await getData.allInfo()
@@ -10,6 +10,7 @@ exports.homepage = async (req, res, next) => {
       return 'geen poster'
     }
   })
+
   let obj = data.map( async (res, index) => {
     if(res.genre_ids.length > 0) {
       let genre = await getData.getGenre(res.genre_ids);
@@ -20,6 +21,7 @@ exports.homepage = async (req, res, next) => {
       }
     }
   })
+
 
   const allObj = await Promise.all(obj)
   res.render('overview', {
