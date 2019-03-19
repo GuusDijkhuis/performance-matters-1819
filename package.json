@@ -4,17 +4,24 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run build:css & npm run build:js",
+    "build:css": "cleancss -o public/css/main.min.css assets/css/main.css",
+    "build:js": "cleancss -o public/css/main.min.css assets/css/main.css",
+    "minify-js": "uglifyjs assets/js/* -h",
+    "prestart": "npm run-s build",
+    "start": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "clean-css-cli": "^4.2.1",
     "express": "^4.16.4",
-    "nodemon": "^1.18.10"
-  },
-  "dependencies": {
     "express-handlebars": "^3.0.2",
-    "node-fetch": "^2.3.0"
-  }
+    "node-fetch": "^2.3.0",
+    "nodemon": "^1.18.10",
+    "uglify-js": "^3.4.10"
+  },
+  "dependencies": {}
 }

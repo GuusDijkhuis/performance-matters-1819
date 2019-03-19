@@ -1,0 +1,9 @@
+<div class="movie-container">
+  <div class="movie-list">
+    {{#each data}}
+    <a class="movie-list-item" href="/details/{{meta.id}}">
+      <img src="{{ image }}" class="movie-poster" alt="{{ meta.title }}">
+    </a>
+    {{/each }}
+  </div>
+</div>
