@@ -2,7 +2,7 @@
 
 Ik heb er voor gekozen om niet met mijn OBA opdracht verder te gaan omdat ik persoonlijk de OBA API heel frustrerend vind. Ik heb daarom gekozen voor de API van Themoviedb. Ik laat de films zien die afgelopen week zijn uitgekomen en je kunt ook de detailpagina laten zien.
 
-![Image of prototype](assets/img/readme-img/prototype.png)
+![Image of prototype](assets/img/readme-img/screenshot-app.png)
 
 # Wat heb ik gedaan
 ## First view
