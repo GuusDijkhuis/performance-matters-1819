@@ -4,41 +4,30 @@ const fs = require('fs');
 const fetch = require('node-fetch');
 
 const baseUrl = 'https://api.themoviedb.org/3';
-const endpoint = 'discover/movie?primary_release_year=2019';
 const key = '4fa4dea399a0fe1c63ee186e5b84c2a1'
 
-exports.allInfo = () => {
+exports.allMovieInfo = () => {
+  const endpoint = 'discover/movie?primary_release_year=2019';
+
   return parseToJson(`${baseUrl}/${endpoint}&api_key=${key}`)
   .then(res => {
     return res.results;
   })
 }
 
+exports.getMovieInfo = (id) => {
+  return parseToJson(`${baseUrl}/movie/${id}?api_key=${key}`)
+}
+
+exports.getMovieCredits = (id) => {
+  return parseToJson(`${baseUrl}/movie/${id}/credits?api_key=${key}`)
+}
+
 exports.getPoster = (path) => {
   return `https://image.tmdb.org/t/p/w500${path}`
 }
 
-exports.getGenre = (id) => {
-  return parseToJson(`https://api.themoviedb.org/3/genre/movie/list?api_key=4fa4dea399a0fe1c63ee186e5b84c2a1`)
-  .then(res => {
-    return res.genres.filter(res => {
-     return res.id == id
-    })
-  })
-  .then(res => {
-    if(res.length > 0) {
-      return res[0].name;
-    }
-    else {
-      return 'geen genre';
-    }
-  })
-}
-
-exports.getSingleInfo = (id) => {
-  return parseToJson(`http://api.themoviedb.org/3/movie/${id}?api_key=4fa4dea399a0fe1c63ee186e5b84c2a1`)
-}
-
+// Parsers
 parseToJson = (url) => {
   return fetch(url)
   .then(res => {

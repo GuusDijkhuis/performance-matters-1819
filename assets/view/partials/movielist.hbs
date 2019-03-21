@@ -3,11 +3,9 @@
     {{#each data}}
     <a class="movie-list-item" href="/details/{{meta.id}}">
       <img src="{{ image }}" class="movie-poster" alt="{{ meta.title }}">
-      <section class="movie-details">
-        <span class="movie-title">{{ meta.title }}</span>
-        <span class="movie-duration">{{ meta.id }}</span>
+      <section class="major-details">
+        <h1 class="movie-title">{{ meta.title }}</h1>
       </section>
-
     </a>
     {{/each }}
   </div>

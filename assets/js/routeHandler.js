@@ -1,44 +1,56 @@
-let express = require('express')
-let getData = require('./getData.js')
+const express = require('express')
+const getData = require('./getData.js')
 
 exports.homepage = async (req, res, next) => {
-  let data = await getData.allInfo()
-  let imageUrlArray = data.map(res => {
+  const data = await getData.allMovieInfo()
+  const imageUrlArray = data.map(res => {
     if(res.poster_path !== null) {
       return getData.getPoster(res.poster_path);
     } else {
       return 'geen poster'
     }
   })
-
-  let obj = data.map( async (res, index) => {
-    if(res.genre_ids.length > 0) {
-      let genre = await getData.getGenre(res.genre_ids);
-      return {
-        meta: res,
-        image: imageUrlArray[index],
-        genre: genre
-      }
+  const obj = data.map( async (res, index) => {
+    const movieMetaData = await getData.getMovieInfo(res.id)
+    return {
+      meta: movieMetaData,
+      image: getData.getPoster(movieMetaData.poster_path),
+      genre: movieMetaData.genres.map(res => {
+        if (res.name) {
+          return res.name
+        } else {
+          return 'Geen genre bekend'
+        }
+      })
     }
   })
 
-
   const allObj = await Promise.all(obj)
+
   res.render('overview', {
     data: allObj
   })
 }
 
 exports.detailpage = async (req, res, next) => {
-  let data = await getData.getSingleInfo(req.params.id)
-  let image = getData.getPoster(data.poster_path)
-  let genre = await getData.getGenre(data.genre_ids);
-  let obj = {
-    meta: data,
-    image: image,
-    genre: genre
-  }
+  const movieMetaData = await getData.getMovieInfo(req.params.id)
+  const movieCreditData = await getData.getMovieCredits(req.params.id)
+  const director = movieCreditData.crew.filter(res => {
+    return res.job === "Director"
+  })
 
+  const obj = {
+    meta: movieMetaData,
+    image: getData.getPoster(movieMetaData.poster_path),
+    genre: movieMetaData.genres.map(res => {
+      if (res.name) {
+        return res.name
+      } else {
+        return 'Geen genre bekend'
+      }
+    }),
+    director: director[0].name
+  }
   res.render('details', {
     data: obj
   })
