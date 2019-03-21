@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path')
 const express = require('express');
+// const compression = require('compression')
 const hbs = require('express-handlebars')
 
 const routes = require('./assets/js/routeHandler.js')
@@ -17,6 +18,7 @@ app.set('views', path.join(__dirname, '/assets/view/'))
 app.set('view engine', 'hbs')
 
 // Client side
-app.use(express.static(__dirname + '/assets'))
+// app.use(compression())
+app.use(express.static(__dirname + '/public'))
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

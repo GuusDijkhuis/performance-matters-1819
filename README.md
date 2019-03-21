@@ -4,17 +4,37 @@ Ik heb er voor gekozen om niet met mijn OBA opdracht verder te gaan omdat ik per
 
 ![Image of prototype](assets/img/readme-img/prototype.png)
 
-## Wat heb ik gedaan
-### Probleem
-Ik als eerst gekeken of er een mogelijk is dat de css kleiner gemaakt kunnen worden waardoor deze sneller laden. Hieronder staat een screenshot van mijn requests van `localhost` en `main.css`. Hier zie je dat de localhost `5kb` groot is en een responsetijd heeft van `949ms`, main.css is `1.7kb` en een responsetijd van `601ms`
-![Image of slow requests](assets/img/readme-img/fast-3g.png)
-### Oplossing
+# Wat heb ik gedaan
+## First view
+### CSS
+#### Probleem
+Ik als eerst gekeken of er een mogelijk is dat de css kleiner gemaakt kunnen worden waardoor deze sneller laadt. Hieronder staat een screenshot van mijn requests van de `main.css`. Hier zie je dat de grootte van dit bestand is `2.5KB`.
+![Image of slow requests](assets/img/readme-img/css-normal-fast-3g.png)
+#### Oplossing
+Ik heb met `gulp-css` het bestand van CSS verkleind naar `2.0KB`. Deze CSS wordt geminified naar een bestand met de naam `main-min.css` om het verschil te laten zien.
+![Image of slow requests](assets/img/readme-img/css-minified-fast-3g.png)
+
+### JS
+#### Probleem
+Ik als eerst gekeken of er een mogelijk is dat de css kleiner gemaakt kunnen worden waardoor deze sneller laadt. Hieronder staat een screenshot van mijn requests van de `jquery.js`. Hier zie je dat de grootte van dit bestand is `266KB`.
+![Image of slow requests](assets/img/readme-img/js-normal-fast-3g.png)
+#### Oplossing
+Ik heb met `gulp-css` het bestand van JS verkleind naar `84.7KB`. Deze JS wordt geminified naar een bestand met de naam `jquery-min.js` om het verschil te laten zien.
+![Image of slow requests](assets/img/readme-img/js-minified-fast-3g.png)
 
 
-## Wat wil ik nog doen
+Na het verkleinen van CSS en JS heb ik de `npm` package `compression` gebruikt om mijn css en JS nog kleiner te maken. Het JS bestand is nog eens kleiner gemaakt tot `30KB`.
+![Image of slow requests](assets/img/readme-img/css-compressed-fast-3g.png)
+Het CSS bestand is kleiner gemaakt tot `1014B`.
+![Image of slow requests](assets/img/readme-img/css-compressed-fast-3g.png)
+
+
+### Wat wil ik nog doen
 - [x] CSS minify
-- [ ] JS minify
-- [ ] IMG slechtere resolutie als verbinding slecht is
+- [x] JS minify
+
+### Wat wil ik nog doen
+- [ ] Cache
 
 
 ### Week 1 - Server Side rendering
