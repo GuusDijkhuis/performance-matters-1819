@@ -72,13 +72,18 @@ Het JS bestand is van `266KB` naar `30KB` gegaan. Dit is `236KB` minder dan het 
 
 ### Cache
 Om vertraging tegen te gaan moeten er dingen in je cache opgeslagen worden. Dit gebeurd op het moment dat je een website voor het eerst opent. Hierna haalt de browser bepaalde informatie uit de cache. Dit moet je alleen aangeven in de `Cache-Control` van je `Header`. Je moet hier de property `max-age` aanpassen naar de aanbevolen tijd hoelang de browser de data moet onthouden. Ik heb met onderstaande code de `max-age` veranderd naar een jaar.
-
-### Code
+##### Code
 ```
 app.use((req, res, next) => {
   res.setHeader('Cache-Control', 'max-age=' + 365 * 24 * 60 * 60);
   next();
 });
 ```
+##### Old
+![No cache](assets/img/readme-img/no-cache.png)
+
+##### New
+![Cache](assets/img/readme-img/cache.png)
+
 ### Wat heb ik gedaan
 - [x] Cache
