@@ -81,12 +81,4 @@ app.use((req, res, next) => {
 });
 ```
 ### Wat wil ik nog doen
-- [ ] Cache
-### Wat wil ik nog doen
-- [ ] Cache
-
-### Week 1 - Server Side rendering
-
-Doel: Webpagina's server side renderen
-
-[Opdrachten](https://github.com/cmda-minor-web/performance-matters-1819/blob/master/week-1.md)
+- [x] Cache
