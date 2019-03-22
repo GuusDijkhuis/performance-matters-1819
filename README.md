@@ -5,7 +5,7 @@ Ik heb er voor gekozen om niet met mijn OBA opdracht verder te gaan omdat ik per
 ![Image of prototype](assets/img/readme-img/screenshot-app.png)
 
 # Wat heb ik gedaan
-## First view
+# First view
 ### Wat wil ik doen
 - [ ] CSS minify
 - [ ] JS minify
@@ -66,7 +66,7 @@ Het JS bestand is van `266KB` naar `30KB` gegaan. Dit is `236KB` minder dan het 
 - [x] JS minify
 - [ ] HTML minify
 
-## Repeat View
+# Repeat View
 ### Wat wil ik nog doen
 - [ ] Cache
 
