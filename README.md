@@ -80,5 +80,5 @@ app.use((req, res, next) => {
   next();
 });
 ```
-### Wat wil ik nog doen
+### Wat heb ik gedaan
 - [x] Cache
