@@ -6,6 +6,11 @@ Ik heb er voor gekozen om niet met mijn OBA opdracht verder te gaan omdat ik per
 
 # Wat heb ik gedaan
 ## First view
+### Wat wil ik doen
+- [x] CSS minify
+- [x] JS minify
+- [ ] HTML minify
+
 ### CSS
 #### Probleem
 Ik als eerst gekeken of er een mogelijk is dat de css kleiner gemaakt kunnen worden waardoor deze sneller laadt. Hieronder staat een screenshot van mijn requests van de `main.css`. Hier zie je dat de grootte van dit bestand is `2.5KB`.
@@ -23,18 +28,17 @@ Ik heb met `gulp-css` het bestand van JS verkleind naar `84.7KB`. Deze JS wordt 
 ![Image of slow requests](assets/img/readme-img/js-minified-fast-3g.png)
 
 
-Na het verkleinen van CSS en JS heb ik de `npm` package `compression` gebruikt om mijn css en JS nog kleiner te maken. Het JS bestand is nog eens kleiner gemaakt tot `30KB`.
-![Image of slow requests](assets/img/readme-img/css-compressed-fast-3g.png)
+Na het verkleinen van CSS en JS heb ik de `npm` package `compression` gebruikt om mijn css en JS nog kleiner te maken.
 Het CSS bestand is kleiner gemaakt tot `1014B`.
 ![Image of slow requests](assets/img/readme-img/css-compressed-fast-3g.png)
+Het JS bestand is nog eens kleiner gemaakt tot `30KB`.
+![Image of slow requests](assets/img/readme-img/js-compressed-fast-3g.png)
+
+
 
 
 ### Wat wil ik nog doen
-- [x] CSS minify
-- [x] JS minify
-
-### Wat wil ik nog doen
-- [ ] Cache
+- [x] Cache
 
 
 ### Week 1 - Server Side rendering

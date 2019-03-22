@@ -19,6 +19,10 @@ app.set('view engine', 'hbs')
 
 // Client side
 app.use(compression())
+app.use((req, res, next) => {
+  res.setHeader('Cache-Control', 'max-age=' + 365 * 24 * 60 * 60);
+  next();
+});
 app.use(express.static(__dirname + '/public'))
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

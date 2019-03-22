@@ -10,18 +10,24 @@ exports.homepage = async (req, res, next) => {
       return 'geen poster'
     }
   })
+
   const obj = data.map( async (res, index) => {
     const movieMetaData = await getData.getMovieInfo(res.id)
     return {
       meta: movieMetaData,
       image: getData.getPoster(movieMetaData.poster_path),
-      genre: movieMetaData.genres.map(res => {
-        if (res.name) {
-          return res.name
+      genre: () => {if(movieMetaData.genres.length > 0) {
+          movieMetaData.genres.name
         } else {
-          return 'Geen genre bekend'
+          movieMetaData.map(res => {
+            if (res.name) {
+              return res.name
+            } else {
+              return 'Geen genre bekend'
+            }
+          })
         }
-      })
+      }
     }
   })
 
