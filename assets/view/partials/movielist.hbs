@@ -1,12 +1,16 @@
 <div class="movie-container">
   <div class="movie-list">
     {{#each data}}
-    <a class="movie-list-item" href="/details/{{meta.id}}">
-      <img src="{{ image }}" class="movie-poster" alt="{{ meta.title }}">
-      <section class="major-details">
-        <h1 class="movie-title">{{ meta.title }}</h1>
-      </section>
-    </a>
+    <div class="movie-list-item" >
+      <input type="checkbox" id="{{ meta.id }}" class="favorite-checkbox" name="{{ meta.id }}" value="" hidden>
+      <label for="{{ meta.id }}" class="fav-btn">Favorite</label>
+      <a href="/details/{{ meta.id }}">
+        <img src="{{ image }}" class="movie-poster" alt="{{ meta.title }}">
+        <section class="major-details">
+          <h1 class="movie-title">{{ meta.title }}</h1>
+        </section>
+      </a>
+    </div>
     {{/each }}
   </div>
 </div>
