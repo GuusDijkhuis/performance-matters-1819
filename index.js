@@ -51,6 +51,7 @@ app.get(['*.js', '*.css'], (req, res, next) => {
   next()
 })
 app.get('/', routes.homepage)
+app.get('/offline', routes.offline)
 app.get('/details/:id', routes.detailpage)
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

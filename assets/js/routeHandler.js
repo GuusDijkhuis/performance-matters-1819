@@ -61,3 +61,9 @@ exports.detailpage = async (req, res, next) => {
     data: obj
   })
 }
+
+exports.offline = async (req, res, next) => {
+  res.render('details', {
+    title: `Offline`
+  })
+}
