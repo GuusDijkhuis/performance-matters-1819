@@ -6,35 +6,50 @@ Ik heb er voor gekozen om niet met mijn OBA opdracht verder te gaan omdat ik per
 
 # First view
 #### CSS Minify
-##### Normal
+Om de first view sneller te maken heb ik mijn CSS geminified. Hierdoor wordt het bestand kleiner gemaakt waardoor de gebruiker sneller de styling van de website te zien krijgt.   
+<details>
+  <summary>Normal</summary>
 Ik als eerst gekeken of er een mogelijk is dat de css kleiner gemaakt kunnen worden waardoor deze sneller laadt. Hieronder staat een screenshot van mijn requests van de `main.css`. Hier zie je dat de grootte van dit bestand `2.5KB` is.
-![Image of slow requests](assets/img/readme-img/css-normal-fast-3g.png)
-##### First solution
-Ik heb met behulp van gulp een bestand gemaakt waar ik de functie gebruik om de css te verkleinen. Het `gulp-css` heeft het bestand van CSS verkleind naar `2.0KB`. Deze CSS wordt omgezet naar een bestand met de naam `main-min.css`  zodat ik in de normale `main.css` de leesbare code heb en deze dus heel makkelijke kan bewerken.
-##### Code
-```
-gulp.task('css-min', () => {
-  return gulp.src(baseDir + '/css/main.css')
-    .pipe(cleanCSS({compatibility: 'ie8'}))
-    .pipe(rename(function (path) {
-      path.basename += "-min";
-      path.extname = ".css";
-    }))
-    .pipe(gulp.dest('public/css/'));
-});
-```
-##### Screenshot
-![Image of slow requests](assets/img/readme-img/css-minified-fast-3g.png)
+  <details>
+     <summary>Screenshot</summary>
+    ![Image of slow requests](assets/img/readme-img/css-normal-fast-3g.png)
+  <details>
+</details>
+<details>
+  <summary>Minify</summary>
+  Ik heb met behulp van gulp een bestand gemaakt waar ik de functie gebruik om de css te verkleinen. Het `gulp-css` heeft het bestand van CSS verkleind naar `2.0KB`. Deze CSS wordt omgezet naar een bestand met de naam `main-min.css`  zodat ik in de normale `main.css` de leesbare code heb en deze dus heel makkelijke kan bewerken.
+  <details>
+   <summary>Code</summary>
+  ```js
+  gulp.task('css-min', () => {
+    return gulp.src(baseDir + '/css/main.css')
+      .pipe(cleanCSS({compatibility: 'ie8'}))
+      .pipe(rename(function (path) {
+        path.basename += "-min";
+        path.extname = ".css";
+      }))
+      .pipe(gulp.dest('public/css/'));
+  });
+  ```
+  </details>
+  <details>
+     <summary>Screenshot</summary>
+    ![Image of slow requests](assets/img/readme-img/css-minified-fast-3g.png)
+  </details>
+</details>
 
 
 #### JS Minify
 ##### Normal
-Ik als eerst gekeken of er een mogelijk is dat de css kleiner gemaakt kunnen worden waardoor deze sneller laadt. Hieronder staat een screenshot van mijn requests van de `jquery.js`. Hier zie je dat de grootte van dit bestand `266KB` is.
-![Image of slow requests](assets/img/readme-img/js-normal-fast-3g.png)
+Om de first view sneller te maken heb ik mijn CSS geminified. Hierdoor wordt het bestand kleiner gemaakt waardoor de gebruiker sneller het gedrag van de website te zien krijgt.   
+<details>
+  <summary>Normal</summary>
+  Ik als eerst gekeken of er een mogelijk is dat de css kleiner gemaakt kunnen worden waardoor deze sneller laadt. Hieronder staat een screenshot van mijn requests van de `jquery.js`. Hier zie je dat de grootte van dit bestand `266KB` is.
+  ![Image of slow requests](assets/img/readme-img/js-normal-fast-3g.png)
 ##### First solution
 Ik heb met `gulp-uglify` het bestand van JS verkleind naar `84.7KB`. Deze JS wordt geminified naar een bestand met de naam `jquery-min.js` om het verschil te laten zien.
 ##### Code
-```
+```js
 gulp.task('jquery-min', function() {
   return gulp.src(baseDir + '/js/jquery.js') 
     .pipe(uglify()) 
@@ -57,7 +72,7 @@ gulp.task('jquery-min', function() {
 #### Cache
 Om vertraging tegen te gaan moeten er dingen in je cache opgeslagen worden. Dit gebeurd op het moment dat je een website voor het eerst opent. Hierna haalt de browser bepaalde informatie uit de cache. Dit moet je alleen aangeven in de `Cache-Control` van je `Header`. Je moet hier de property `max-age` aanpassen naar de aanbevolen tijd hoelang de browser de data moet onthouden. Ik heb met onderstaande code de `max-age` veranderd naar een jaar.
 ##### Code
-```
+```js
 app.use((req, res, next) => {
   res.setHeader('Cache-Control', 'max-age=' + 365 * 24 * 60 * 60);
   next();
