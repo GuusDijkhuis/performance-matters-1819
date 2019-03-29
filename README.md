@@ -10,10 +10,11 @@ Om de first view sneller te maken heb ik mijn CSS geminified. Hierdoor wordt het
 <details>
   <summary>Normal</summary>
 Ik als eerst gekeken of er een mogelijk is dat de css kleiner gemaakt kunnen worden waardoor deze sneller laadt. Hieronder staat een screenshot van mijn requests van de `main.css`. Hier zie je dat de grootte van dit bestand `2.5KB` is.
+
   <details>
      <summary>Screenshot</summary>
     ![Image of slow requests](assets/img/readme-img/css-normal-fast-3g.png)
-  <details>
+  </details>
 </details>
 <details>
   <summary>Minify</summary>
