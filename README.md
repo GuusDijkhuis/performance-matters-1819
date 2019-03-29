@@ -46,22 +46,29 @@ Om de first view sneller te maken heb ik mijn CSS geminified. Hierdoor wordt het
   <summary>Normal</summary>
   Ik als eerst gekeken of er een mogelijk is dat de css kleiner gemaakt kunnen worden waardoor deze sneller laadt. Hieronder staat een screenshot van mijn requests van de `jquery.js`. Hier zie je dat de grootte van dit bestand `266KB` is.
   ![Image of slow requests](assets/img/readme-img/js-normal-fast-3g.png)
-##### First solution
-Ik heb met `gulp-uglify` het bestand van JS verkleind naar `84.7KB`. Deze JS wordt geminified naar een bestand met de naam `jquery-min.js` om het verschil te laten zien.
-##### Code
-```js
-gulp.task('jquery-min', function() {
-  return gulp.src(baseDir + '/js/jquery.js') 
-    .pipe(uglify()) 
-    .pipe(rename(function (path) {
-      path.basename += "-min";
-      path.extname = ".js";
-    }))
-    .pipe(gulp.dest('public/js/'));
-});
-```
-##### Screenshot
+</details>
+<details>
+  <summary>Minify</summary>
+  Ik heb met `gulp-uglify` het bestand van JS verkleind naar `84.7KB`. Deze JS wordt geminified naar een bestand met de naam `jquery-min.js` om het verschil te laten zien.
+  <details>
+   <summary>Code</summary>
+  ```js
+  gulp.task('jquery-min', function() {
+    return gulp.src(baseDir + '/js/jquery.js') 
+      .pipe(uglify()) 
+      .pipe(rename(function (path) {
+        path.basename += "-min";
+        path.extname = ".js";
+      }))
+      .pipe(gulp.dest('public/js/'));
+  });
+  ```
+  </details>
+  <details>
+   <summary>Screenshot</summary>
 ![Image of slow requests](assets/img/readme-img/js-minified-fast-3g.png)
+  </details>
+</details>
 
 #### Wat heb ik gedaan
 - [x] CSS minify
