@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "minify": "run-s minify:*",
+    "minify:css": "gulp css-min",
+    "minify:js": "gulp jquery-min",
+    "revision": "gulp revision",
+    "start": "nodemon index.js"
   },
   "keywords": [],
   "author": "",

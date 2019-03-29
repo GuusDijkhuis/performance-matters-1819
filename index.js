@@ -54,7 +54,7 @@ app.get('/', routes.homepage)
 app.get('/offline', routes.offline)
 app.get('/details/:id', routes.detailpage)
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen((process.env.PORT || port), () => console.log(`Example app listening on port ${port}!`))
 
 function revUrl(url) {
   let fileName = JSON.parse(fs.readFileSync("public/rev-manifest.json", 'utf8'))
