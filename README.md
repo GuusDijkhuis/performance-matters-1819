@@ -41,7 +41,6 @@ Ik als eerst gekeken of er een mogelijk is dat de css kleiner gemaakt kunnen wor
 
 
 #### JS Minify
-##### Normal
 Om de first view sneller te maken heb ik mijn CSS geminified. Hierdoor wordt het bestand kleiner gemaakt waardoor de gebruiker sneller het gedrag van de website te zien krijgt.   
 <details>
   <summary>Normal</summary>
@@ -71,34 +70,52 @@ Om de first view sneller te maken heb ik mijn CSS geminified. Hierdoor wordt het
   </details>
 </details>
 
+# Repeat View
+#### Cache
+Om vertraging tegen te gaan moeten er dingen in je cache opgeslagen worden. Dit gebeurd op het moment dat je een website voor het eerst opent. Hierna haalt de browser bepaalde informatie uit de cache. Dit moet je alleen aangeven in de `Cache-Control` van je `Header`. Je moet hier de property `max-age` aanpassen naar de aanbevolen tijd hoelang de browser de data moet onthouden. Ik heb met onderstaande code de `max-age` veranderd naar een jaar.
+<details>
+  <summary>Code</summary>
+  ```js
+  app.use((req, res, next) => {
+    res.setHeader('Cache-Control', 'max-age=' + 365 * 24 * 60 * 60);
+    next();
+  });
+  ```
+</details>
+<details>
+  <summary>Old</summary>
+  ![No cache](assets/img/readme-img/no-cache.png)
+</details>
+<details>
+  <summary>New</summary>
+  ![No cache](assets/img/readme-img/cache.png)
+</details>
+
+#### Compression
+Na het verkleinen van CSS en JS heb ik de `npm` package `compression` gebruikt om mijn css en JS nog kleiner te maken. Het CSS bestand is kleiner gemaakt tot `1014B`. Dit is een minification van `1.5KB`. Dit staat gelijk aan een verkleining van ongeveer `60%`.
+  <details>
+    <summary>Old</summary>
+    ![Image of compressed css and js file](assets/img/readme-img/css-compressed-fast-3g.png)
+  </details>
+</br>
+Het JS bestand is van `266KB` naar `30KB` gegaan. Dit is `236KB` minder dan het origineel. Dit betekend dat het ongeveer `89%` verkleind is.
+</br>
+
+  <details>
+    <summary>New</summary>
+    ![Image of compressed css and js file](assets/img/readme-img/js-compressed-fast-3g.png)
+  </details>
+
+# Waarom?
+Waarom ik de First view en Repeat view belangrijk vond is omdat ik vind dat mensen met een zo hoog mogelijke snelheid de pagina moeten kunnen laden.
+
+# Audit
+![Image of the audit](assets/img/readme-img/audit.png)
+
+
 #### Wat heb ik gedaan
 - [x] CSS minify
 - [x] JS minify
 - [ ] HTML minify
-
-# Repeat View
-#### Cache
-Om vertraging tegen te gaan moeten er dingen in je cache opgeslagen worden. Dit gebeurd op het moment dat je een website voor het eerst opent. Hierna haalt de browser bepaalde informatie uit de cache. Dit moet je alleen aangeven in de `Cache-Control` van je `Header`. Je moet hier de property `max-age` aanpassen naar de aanbevolen tijd hoelang de browser de data moet onthouden. Ik heb met onderstaande code de `max-age` veranderd naar een jaar.
-##### Code
-```js
-app.use((req, res, next) => {
-  res.setHeader('Cache-Control', 'max-age=' + 365 * 24 * 60 * 60);
-  next();
-});
-```
-##### Old
-![No cache](assets/img/readme-img/no-cache.png)
-
-##### New
-![Cache](assets/img/readme-img/cache.png)
-
-#### Compression
-Na het verkleinen van CSS en JS heb ik de `npm` package `compression` gebruikt om mijn css en JS nog kleiner te maken.
-Het CSS bestand is kleiner gemaakt tot `1014B`. Dit is een minification van `1.5KB`. Dit staat gelijk aan een verkleining van ongeveer `60%`.
-![Image of slow requests](assets/img/readme-img/css-compressed-fast-3g.png)
-Het JS bestand is van `266KB` naar `30KB` gegaan. Dit is `236KB` minder dan het origineel. Dit betekend dat het ongeveer `89%` verkleind is.
-![Image of slow requests](assets/img/readme-img/js-compressed-fast-3g.png)
-
-### Wat heb ik gedaan
 - [x] Cache
-- [x] Cache
+- [x] Compression
