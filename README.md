@@ -52,6 +52,7 @@ Om de first view sneller te maken heb ik mijn CSS geminified. Hierdoor wordt het
   Ik heb met `gulp-uglify` het bestand van JS verkleind naar `84.7KB`. Deze JS wordt geminified naar een bestand met de naam `jquery-min.js` om het verschil te laten zien.
   <details>
    <summary>Code</summary>
+
   ```js
   gulp.task('jquery-min', function() {
     return gulp.src(baseDir + '/js/jquery.js') 
@@ -63,6 +64,7 @@ Om de first view sneller te maken heb ik mijn CSS geminified. Hierdoor wordt het
       .pipe(gulp.dest('public/js/'));
   });
   ```
+
   </details>
   <details>
    <summary>Screenshot</summary>
@@ -75,12 +77,14 @@ Om de first view sneller te maken heb ik mijn CSS geminified. Hierdoor wordt het
 Om vertraging tegen te gaan moeten er dingen in je cache opgeslagen worden. Dit gebeurd op het moment dat je een website voor het eerst opent. Hierna haalt de browser bepaalde informatie uit de cache. Dit moet je alleen aangeven in de `Cache-Control` van je `Header`. Je moet hier de property `max-age` aanpassen naar de aanbevolen tijd hoelang de browser de data moet onthouden. Ik heb met onderstaande code de `max-age` veranderd naar een jaar.
 <details>
   <summary>Code</summary>
+
   ```js
   app.use((req, res, next) => {
     res.setHeader('Cache-Control', 'max-age=' + 365 * 24 * 60 * 60);
     next();
   });
   ```
+
 </details>
 <details>
   <summary>Old</summary>
@@ -119,3 +123,22 @@ Waarom ik de First view en Repeat view belangrijk vond is omdat ik vind dat mens
 - [ ] HTML minify
 - [x] Cache
 - [x] Compression
+
+# Service worker
+Service worker gebruik ik om aan te geven of mijn website online is. Onderstaand screenshot geeft aan hoelang de offline pagina erover doet om te laden als er geen internetverbinding is.
+![Image of the audit](assets/img/readme-img/service-worker.png)
+
+# Heroku
+Ik heb mijn app live gezet op Heroku. Hij is te vinden middels de onderstaande link:
+- [Link](https://webdev-1819-pm-guusdijkhuis.herokuapp.com/)
+
+# Terms
+- Perceived performance: Refers to how quickly a software feature appears to perform its task
+
+- Repeat view: Is a repeated visit to the application where some files are stored in the cache.
+
+- Image loading: Space that is reserved for the image to load.
+
+- Runtime performance: Often runtime performance can be improved through minor changes to your source programs. The amount of improvement each change provides depends on how your program is organized. The functions and language constructs your program uses
+
+- Time to first byte: Time To First Byte identifies the time at which your server sends a response
