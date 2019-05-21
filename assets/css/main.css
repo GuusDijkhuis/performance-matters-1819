@@ -2,6 +2,8 @@
   --text-color: 255, 255, 255;
   --container-color: 89, 27, 39;
   --background-color: 255, 255, 255;
+  --body-color: 51, 00, 00;
+  --grey-color: 220,220,220;
 }
 
 * {
@@ -11,8 +13,11 @@
   font-family: 'Roboto', 'sans-serif'
 }
 body {
-  background-color: rgb(var(--background-color));
+  background-color: rgba(var(--grey-color),1);
   min-height: 100vh;
+}
+main {
+  background-color: rgba(var(--grey-color),1);
 }
 
 /* Menu */
@@ -146,4 +151,35 @@ input[type="checkbox"]:checked + .fav-btn {
   width: 100%;
   position: absolute;
   right: 0;
+}
+
+#offline-msg {
+  display: block;
+  width: 50%;
+  margin: 0 auto;
+  position: relative;
+  margin-top: 5rem;
+  height: 10rem;
+}
+#offline-title {
+  background-color: rgba(var(--body-color),1);
+  padding: .5rem 1rem;
+  position: absolute;
+  top: -1.5rem;
+  left: -2rem;
+  z-index: 2;
+  font-size: 1.5rem;
+  color: white;
+}
+#offline-info {
+  background-color: rgba(255,255,255,1);
+  z-index: 1;
+  color: black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
